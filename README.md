@@ -32,13 +32,26 @@
 - Customizable styling via CSS custom properties
 - Multiple themes: Default, Dark, Minimal
 
-## 🚀 Quick Start
+## 📦 Installation
 
-### Installation
+### NPM (Recommended)
 
 ```bash
 npm install hy-masonry
 ```
+
+### CDN
+
+```html
+<script type="module" src="https://unpkg.com/hy-masonry@latest/dist/hy-masonry.esm.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/hy-masonry@latest/dist/hy-masonry.css">
+```
+
+### Manual Download
+
+Download the latest release from [GitHub Releases](https://github.com/hy-masonry/hy-masonry/releases) and include the files manually.
+
+## 🚀 Quick Start
 
 ### Basic Usage
 
