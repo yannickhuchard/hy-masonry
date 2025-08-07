@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HY Masonry - Advanced Web Component</title>
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="HY Masonry - Advanced Web Component">
+    <meta name="description" content="Advanced masonry layout web component with breathing animations, morphing effects, and responsive design. Perfect for modern web applications.">
+    <meta name="keywords" content="masonry layout, web component, CSS grid, responsive design, animations, JavaScript, frontend, UI component">
+    <meta name="author" content="Yannick HUCHARD">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hy-masonry.com/">
+    <meta property="og:title" content="HY Masonry - Advanced Web Component">
+    <meta property="og:description" content="Advanced masonry layout web component with breathing animations, morphing effects, and responsive design. Perfect for modern web applications.">
+    <meta property="og:image" content="https://hy-masonry.com/images/android-chrome-512x512.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta property="og:image:alt" content="HY Masonry Logo">
+    <meta property="og:site_name" content="HY Masonry">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hy-masonry.com/">
+    <meta property="twitter:title" content="HY Masonry - Advanced Web Component">
+    <meta property="twitter:description" content="Advanced masonry layout web component with breathing animations, morphing effects, and responsive design. Perfect for modern web applications.">
+    <meta property="twitter:image" content="https://hy-masonry.com/images/android-chrome-512x512.png">
+    <meta property="twitter:image:alt" content="HY Masonry Logo">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="HY Masonry">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://hy-masonry.com/">
+    
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "HY Masonry",
+      "description": "Advanced masonry layout web component with breathing animations, morphing effects, and responsive design.",
+      "url": "https://hy-masonry.com/",
+      "applicationCategory": "WebComponent",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+             "author": {
+         "@type": "Person",
+         "name": "Yannick HUCHARD",
+         "url": "https://yannickhuchard.com"
+       },
+      "softwareVersion": "1.0.0",
+      "downloadUrl": "https://npmjs.com/package/hy-masonry",
+      "screenshot": "https://hy-masonry.com/images/android-chrome-512x512.png"
+    }
+    </script>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/docs.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <img src="images/hy-masonry-logo.png" alt="HY Masonry" class="nav-logo">
+                    <span class="version">v1.0.0</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#features" class="nav-link">Features</a></li>
+                    <li><a href="#configuration" class="nav-link">Configuration</a></li>
+                    <li><a href="#examples" class="nav-link">Examples</a></li>
+                    <li><a href="#api" class="nav-link">API</a></li>
+                    <li><a href="#download" class="nav-link">Download</a></li>
+                </ul>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-container">
+                <div class="hero-demo">
+                    <div class="demo-container">
+                        <hy-masonry id="hero-masonry"></hy-masonry>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="container">
+                <h2 class="section-title">Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <h3>Advanced Animations</h3>
+                        <p>Breathing, pulse, and float animations with customizable timing and intensity.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                <polyline points="3.27,6.96 12,12.01 20.73,6.96"/>
+                                <line x1="12" y1="22.08" x2="12" y2="12"/>
+                            </svg>
+                        </div>
+                        <h3>Morphing Effects</h3>
+                        <p>Dynamic size changes on hover and long press with smooth transitions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                        </div>
+                        <h3>Responsive Design</h3>
+                        <p>Automatic breakpoint handling with customizable column configurations.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/>
+                            </svg>
+                        </div>
+                        <h3>Performance Optimized</h3>
+                        <p>Hardware acceleration, throttled resize events, and intersection observers.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 12l2 2 4-4"/>
+                                <path d="M21 12c-1 0-2-1-2-2s1-2 2-2 2 1 2 2-1 2-2 2z"/>
+                                <path d="M3 12c1 0 2-1 2-2s-1-2-2-2-2 1-2 2 1 2 2 2z"/>
+                                <path d="M12 3c0 1-1 2-2 2s-2-1-2-2 1-2 2-2 2 1 2 2z"/>
+                                <path d="M12 21c0-1 1-2 2-2s2 1 2 2-1 2-2 2-2-1-2-2z"/>
+                            </svg>
+                        </div>
+                        <h3>Touch Support</h3>
+                        <p>Full touch interaction support with long press detection and gesture handling.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M12 1v6m0 6v6"/>
+                                <path d="M1 12h6m6 0h6"/>
+                            </svg>
+                        </div>
+                        <h3>Theme System</h3>
+                        <p>Multiple built-in themes with easy customization and CSS custom properties.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Configuration Section -->
+        <section id="configuration" class="configuration">
+            <div class="container">
+                <h2 class="section-title">Configuration</h2>
+                <p class="section-description">
+                    Explore the full range of HY Masonry configuration options. Each section provides live controls 
+                    that update the preview in real-time, allowing you to see exactly how your settings affect the layout, 
+                    animations, and styling. The preview area is now much larger to show the complete extent of your configuration.
+                </p>
+                <div class="config-content">
+                    <div class="config-sidebar">
+                        <nav class="config-nav">
+                            <a href="#" data-target="layout-config" class="config-nav-link active">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="7" height="7"/>
+                                    <rect x="14" y="3" width="7" height="7"/>
+                                    <rect x="14" y="14" width="7" height="7"/>
+                                    <rect x="3" y="14" width="7" height="7"/>
+                                </svg>
+                                Layout
+                            </a>
+                            <a href="#" data-target="animation-config" class="config-nav-link">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                </svg>
+                                Animation
+                            </a>
+                            <a href="#" data-target="morphing-config" class="config-nav-link">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                    <polyline points="3.27,6.96 12,12.01 20.73,6.96"/>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"/>
+                                </svg>
+                                Morphing
+                            </a>
+                            <a href="#" data-target="responsive-config" class="config-nav-link">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                                Responsive
+                            </a>
+                            <a href="#" data-target="interaction-config" class="config-nav-link">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 12l2 2 4-4"/>
+                                    <path d="M21 12c-1 0-2-1-2-2s1-2 2-2 2 1 2 2-1 2-2 2z"/>
+                                    <path d="M3 12c1 0 2-1 2-2s-1-2-2-2-2 1-2 2 1 2 2 2z"/>
+                                    <path d="M12 3c0 1-1 2-2 2s-2-1-2-2 1-2 2-2 2 1 2 2z"/>
+                                    <path d="M12 21c0-1 1-2 2-2s2 1 2 2-1 2-2 2-2-1-2-2z"/>
+                                </svg>
+                                Interaction
+                            </a>
+                            <a href="#" data-target="styling-config" class="config-nav-link">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="3"/>
+                                    <path d="M12 1v6m0 6v6"/>
+                                    <path d="M1 12h6m6 0h6"/>
+                                </svg>
+                                Styling
+                            </a>
+                            <a href="#" data-target="performance-config" class="config-nav-link">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/>
+                                </svg>
+                                Performance
+                            </a>
+                        </nav>
+                    </div>
+                    <div class="config-main">
+                        <div id="layout-config" class="config-section active">
+                            <h3>Layout Configuration</h3>
+                            <div class="config-demo">
+                                <div class="config-controls">
+                                    <div class="control-group">
+                                        <label for="columns">Columns</label>
+                                        <input type="range" id="columns" min="1" max="8" value="4" class="slider">
+                                        <span class="value">4</span>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="gap">Gap (px)</label>
+                                        <input type="range" id="gap" min="8" max="32" value="16" class="slider">
+                                        <span class="value">16</span>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="padding">Padding (px)</label>
+                                        <input type="range" id="padding" min="10" max="40" value="20" class="slider">
+                                        <span class="value">20</span>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="itemCount">Item Count</label>
+                                        <input type="range" id="itemCount" min="3" max="12" value="6" class="slider">
+                                        <span class="value">6</span>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="itemSizes">Item Size Distribution</label>
+                                        <select id="itemSizes" class="select-input">
+                                            <option value="mixed">Mixed Sizes</option>
+                                            <option value="uniform">Uniform (1x1)</option>
+                                            <option value="large">Large Items</option>
+                                            <option value="tall">Tall Items</option>
+                                            <option value="wide">Wide Items</option>
+                                        </select>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="borderWidth">Border Width (px)</label>
+                                                                                 <input type="range" id="borderWidth" min="0" max="10" value="0" class="slider">
+                                         <span class="value">0</span>
+                                    </div>
+                                </div>
+                                <div class="config-preview">
+                                    <hy-masonry id="layout-demo"></hy-masonry>
+                                </div>
+                            </div>
+                            <div class="config-code">
+                                <h4>Code Example</h4>
+                                                                 <pre><code class="language-javascript">const config = {
+   columns: 4,
+   gap: 16,
+   padding: 20,
+   borderWidth: 0
+ };
+
+// Add items with different sizes
+masonry.addItem({
+  id: 'item1',
+  size: '2x2',
+  content: 'Large Item'
+});
+
+masonry.addItem({
+  id: 'item2', 
+  size: '1x2',
+  content: 'Tall Item'
+});</code></pre>
+                            </div>
+                        </div>
+
+                        <div id="animation-config" class="config-section">
+                            <h3>Animation Configuration</h3>
+                            <div class="config-demo">
+                                <div class="config-controls">
+                                    <div class="control-group">
+                                        <label>
+                                            <input type="checkbox" id="animation" checked>
+                                            Enable Animations
+                                        </label>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="animationDuration">Duration (ms)</label>
+                                        <input type="range" id="animationDuration" min="100" max="1000" value="300" class="slider">
+                                        <span class="value">300</span>
+                                    </div>
+                                    <div class="control-group">
+                                        <label>
+                                            <input type="checkbox" id="breathingEffect" checked>
+                                            Breathing Effect
+                                        </label>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="breathingSpeed">Breathing Speed (ms)</label>
+                                        <input type="range" id="breathingSpeed" min="1000" max="5000" value="2000" class="slider">
+                                        <span class="value">2000</span>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="animationType">Animation Type</label>
+                                        <select id="animationType" class="select-input">
+                                            <option value="breathing">Breathing</option>
+                                            <option value="pulse">Pulse</option>
+                                            <option value="float">Float</option>
+                                            <option value="none">None</option>
+                                        </select>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="animationIntensity">Animation Intensity</label>
+                                        <input type="range" id="animationIntensity" min="0.1" max="2.0" step="0.1" value="1.0" class="slider">
+                                        <span class="value">1.0</span>
+                                    </div>
+                                    <div class="control-group">
+                                        <label>
+                                            <input type="checkbox" id="reduceMotion" checked>
+                                            Respect Motion Preferences
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="config-preview">
+                                    <hy-masonry id="animation-demo"></hy-masonry>
+                                </div>
+                            </div>
+                            <div class="config-code">
+                                <h4>Code Example</h4>
+                                <pre><code class="language-javascript">const config = {
+  animation: true,
+  animationDuration: 300,
+  breathingEffect: true,
+  breathingSpeed: 2000,
+  reduceMotion: true
+};
+
+// Add animated items
+masonry.addItem({
+  id: 'animated-item',
+  size: '1x1',
+  content: 'Animated Content',
+  animationType: 'breathing',
+  animationDelay: 0
+});</code></pre>
+                            </div>
+                        </div>
+
+                        <div id="morphing-config" class="config-section">
+                            <h3>Morphing Configuration</h3>
+                            <div class="config-demo">
+                                <div class="config-controls">
+                                    <div class="control-group">
+                                        <label>
+                                            <input type="checkbox" id="morphing" checked>
+                                            Enable Morphing
+                                        </label>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="morphDuration">Morph Duration (ms)</label>
+                                        <input type="range" id="morphDuration" min="200" max="1000" value="500" class="slider">
+                                        <span class="value">500</span>
+                                    </div>
+                                    <div class="control-group">
+                                        <label>
+                                            <input type="checkbox" id="hoverMorph" checked>
+                                            Hover Morph
+                                        </label>
+                                    </div>
+                                    <div class="control-group">
+                                        <label>
+                                            <input type="checkbox" id="longPressMorph" checked>
+                                            Long Press Morph
+                                        </label>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="morphSize">Morph Size</label>
+                                        <select id="morphSize" class="select-input">
+                                            <option value="2x2">2x2</option>
+                                            <option value="2x3">2x3</option>
+                                            <option value="3x2">3x2</option>
+                                            <option value="3x3">3x3</option>
+                                            <option value="1x3">1x3</option>
+                                            <option value="3x1">3x1</option>
+                                        </select>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="morphEasing">Morph Easing</label>
+                                        <select id="morphEasing" class="select-input">
+                                            <option value="ease">Ease</option>
+                                            <option value="ease-in">Ease In</option>
+                                            <option value="ease-out">Ease Out</option>
+                                            <option value="ease-in-out">Ease In Out</option>
+                                            <option value="cubic-bezier(0.4, 0, 0.2, 1)">Cubic Bezier</option>
+                                        </select>
+                                    </div>
+                                    <div class="control-group">
+                                        <label>
+                                            <input type="checkbox" id="morphScale" checked>
+                                            Scale on Morph
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="config-preview">
+                                    <hy-masonry id="morphing-demo"></hy-masonry>
+                                </div>
+                            </div>
+                            <div class="config-code">
+                                <h4>Code Example</h4>
+                                <pre><code class="language-javascript">const config = {
+  morphing: true,
+  morphDuration: 500,
+  hoverMorph: true,
+  longPressMorph: true
+};
+
+// Morph an item programmatically
+masonry.morphItem('item-id', '2x2', 500);
+
+// Add item with morphing configuration
+masonry.addItem({
+  id: 'morphable-item',
+  size: '1x1',
+  content: 'Morphable Item',
+  morphOnHover: true,
+  morphSize: '2x2',
+  morphDuration: 500
+});</code></pre>
+                            </div>
+                        </div>
+
+                        <div id="responsive-config" class="config-section">
+                            <h3>Responsive Configuration</h3>
+                            <div class="config-demo">
+                                <div class="config-controls">
+                                    <div class="control-group">
+                                        <label>
+                                            <input type="checkbox" id="responsive" checked>
+                                            Enable Responsive
+                                        </label>
+                                    </div>
+                                    <div class="control-group">
+                                        <label>Mobile (≤768px)</label>
+                                        <div class="breakpoint-controls">
+                                            <input type="number" id="mobile-columns" value="2" min="1" max="4" class="number-input">
+                                            <span>columns</span>
+                                            <input type="number" id="mobile-gap" value="12" min="8" max="20" class="number-input">
+                                            <span>gap</span>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label>Tablet (769px-1024px)</label>
+                                        <div class="breakpoint-controls">
+                                            <input type="number" id="tablet-columns" value="3" min="1" max="6" class="number-input">
+                                            <span>columns</span>
+                                            <input type="number" id="tablet-gap" value="14" min="10" max="24" class="number-input">
+                                            <span>gap</span>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label>Desktop (>1024px)</label>
+                                        <div class="breakpoint-controls">
+                                            <input type="number" id="desktop-columns" value="4" min="1" max="8" class="number-input">
+                                            <span>columns</span>
+                                            <input type="number" id="desktop-gap" value="16" min="12" max="32" class="number-input">
+                                            <span>gap</span>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="responsiveMode">Responsive Mode</label>
+                                        <select id="responsiveMode" class="select-input">
+                                            <option value="auto">Auto (CSS Media Queries)</option>
+                                            <option value="js">JavaScript (Resize Observer)</option>
+                                            <option value="hybrid">Hybrid</option>
+                                        </select>
+                                    </div>
+                                    <div class="control-group">
+                                        <label>
+                                            <input type="checkbox" id="responsiveAnimation" checked>
+                                            Animate on Breakpoint Change
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="config-preview">
+                                    <hy-masonry id="responsive-demo"></hy-masonry>
+                                </div>
+                            </div>
+                            <div class="config-code">
+                                <h4>Code Example</h4>
+                                <pre><code class="language-javascript">const config = {
+  responsive: true,
+  breakpoints: {
+    mobile: { 
+      minWidth: 0,
+      maxWidth: 768,
+      columns: 2, 
+      gap: 12,
+      padding: 16
+    },
+    tablet: { 
+      minWidth: 769,
+      maxWidth: 1024,
+      columns: 3, 
+      gap: 14,
+      padding: 18
+    },
+    desktop: { 
+      minWidth: 1025,
+      maxWidth: null,
+      columns: 4, 
+      gap: 16,
+      padding: 20
+    }
+  }
+};</code></pre>
+                            </div>
+                        </div>
+
+                        <div id="interaction-config" class="config-section">
+                            <h3>Interaction Configuration</h3>
+                            <div class="config-demo">
+                                <div class="config-controls">
+                                    <div class="control-group">
+                                        <label for="longPressDelay">Long Press Delay (ms)</label>
+                                        <input type="range" id="longPressDelay" min="200" max="1000" value="500" class="slider">
+                                        <span class="value">500</span>
+                                    </div>
+                                    <div class="control-group">
+                                        <label>
+                                            <input type="checkbox" id="touchEnabled" checked>
+                                            Touch Enabled
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="config-preview">
+                                    <hy-masonry id="interaction-demo"></hy-masonry>
+                                </div>
+                            </div>
+                            <div class="config-code">
+                                <h4>Code Example</h4>
+                                <pre><code class="language-javascript">const config = {
+  longPressDelay: 500,
+  touchEnabled: true
+};</code></pre>
+                            </div>
+                        </div>
+
+                        <div id="styling-config" class="config-section">
+                            <h3>Styling Configuration</h3>
+                            <div class="config-demo">
+                                <div class="config-controls">
+                                    <div class="control-group">
+                                        <label for="theme">Theme</label>
+                                        <select id="theme" class="select-input">
+                                            <option value="default">Default</option>
+                                            <option value="dark">Dark</option>
+                                            <option value="minimal">Minimal</option>
+                                            <option value="glass">Glass</option>
+                                            <option value="neon">Neon</option>
+                                        </select>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="borderRadius">Border Radius (px)</label>
+                                        <input type="range" id="borderRadius" min="0" max="20" value="8" class="slider">
+                                        <span class="value">8</span>
+                                    </div>
+                                    <div class="control-group">
+                                        <label>
+                                            <input type="checkbox" id="shadow" checked>
+                                            Enable Shadow
+                                        </label>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="shadowIntensity">Shadow Intensity</label>
+                                        <input type="range" id="shadowIntensity" min="0.1" max="2.0" step="0.1" value="1.0" class="slider">
+                                        <span class="value">1.0</span>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="backgroundColor">Background Color</label>
+                                        <input type="color" id="backgroundColor" value="#ffffff" class="color-input">
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="textColor">Text Color</label>
+                                        <input type="color" id="textColor" value="#000000" class="color-input">
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="borderColor">Border Color</label>
+                                        <input type="color" id="borderColor" value="#e0e0e0" class="color-input">
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="hoverScale">Hover Scale</label>
+                                        <input type="range" id="hoverScale" min="1.0" max="1.2" step="0.01" value="1.02" class="slider">
+                                        <span class="value">1.02</span>
+                                    </div>
+                                </div>
+                                <div class="config-preview">
+                                    <hy-masonry id="styling-demo"></hy-masonry>
+                                </div>
+                            </div>
+                            <div class="config-code">
+                                <h4>Code Example</h4>
+                                <pre><code class="language-javascript">const config = {
+  theme: 'default',
+  borderRadius: 8,
+     borderWidth: 0,
+  shadow: true,
+  backgroundColor: '#ffffff',
+  textColor: '#000000',
+  borderColor: '#e0e0e0',
+  hoverScale: 1.02
+};
+
+// CSS Custom Properties
+:root {
+  --hy-masonry-gap: 16px;
+--hy-masonry-padding: 20px;
+--hy-masonry-border-radius: 8px;
+--hy-masonry-border-width: 1px;
+--hy-masonry-border-color: #333333;
+--hy-masonry-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+--hy-masonry-transition: 300ms ease;
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <div id="performance-config" class="config-section">
+                            <h3>Performance Configuration</h3>
+                            <div class="config-demo">
+                                <div class="config-controls">
+                                    <div class="control-group">
+                                        <label for="throttleResize">Resize Throttle (ms)</label>
+                                        <input type="range" id="throttleResize" min="50" max="200" value="100" class="slider">
+                                        <span class="value">100</span>
+                                    </div>
+                                    <div class="control-group">
+                                        <label>
+                                            <input type="checkbox" id="useTransform" checked>
+                                            Use Transform
+                                        </label>
+                                    </div>
+                                    <div class="control-group">
+                                        <label>
+                                            <input type="checkbox" id="hardwareAcceleration" checked>
+                                            Hardware Acceleration
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="config-preview">
+                                    <hy-masonry id="performance-demo"></hy-masonry>
+                                </div>
+                            </div>
+                            <div class="config-code">
+                                <h4>Code Example</h4>
+                                <pre><code class="language-javascript">const config = {
+  throttleResize: 100,
+  useTransform: true,
+  hardwareAcceleration: true
+};</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Examples Section -->
+        <section id="examples" class="examples">
+            <div class="container">
+                <h2 class="section-title">Examples</h2>
+                <div class="examples-grid">
+                    <div class="example-card">
+                        <h3>Basic Layout</h3>
+                        <div class="example-preview">
+                            <hy-masonry id="basic-example"></hy-masonry>
+                        </div>
+                        <div class="example-code">
+                            <pre><code class="language-html">&lt;hy-masonry&gt;&lt;/hy-masonry&gt;</code></pre>
+                        </div>
+                    </div>
+                    <div class="example-card">
+                        <h3>Animated Items</h3>
+                        <div class="example-preview">
+                            <hy-masonry id="animated-example"></hy-masonry>
+                        </div>
+                        <div class="example-code">
+                            <pre><code class="language-javascript">masonry.addItem({
+  id: 'item1',
+  size: '1x1',
+  content: 'Animated Item',
+  animationType: 'breathing'
+});</code></pre>
+                        </div>
+                    </div>
+                    <div class="example-card">
+                        <h3>Morphing Effects</h3>
+                        <div class="example-preview">
+                            <hy-masonry id="morphing-example"></hy-masonry>
+                        </div>
+                        <div class="example-code">
+                            <pre><code class="language-javascript">masonry.morphItem('item1', '2x2', 500);</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- API Section -->
+        <section id="api" class="api">
+            <div class="container">
+                <h2 class="section-title">API Reference</h2>
+                <div class="api-content">
+                    <div class="api-section">
+                        <h3>Methods</h3>
+                        <div class="api-item">
+                            <h4>addItem(item: MasonryItem)</h4>
+                            <p>Add a new item to the masonry layout.</p>
+                            <pre><code class="language-javascript">masonry.addItem({
+  id: 'unique-id',
+  size: '1x1',
+  content: 'Item content',
+  backgroundColor: '#f0f0f0'
+});</code></pre>
+                        </div>
+                        <div class="api-item">
+                            <h4>removeItem(itemId: string)</h4>
+                            <p>Remove an item from the masonry layout.</p>
+                            <pre><code class="language-javascript">masonry.removeItem('item-id');</code></pre>
+                        </div>
+                        <div class="api-item">
+                            <h4>updateItem(itemId: string, newConfig: Partial&lt;MasonryItem&gt;)</h4>
+                            <p>Update an existing item's configuration.</p>
+                            <pre><code class="language-javascript">masonry.updateItem('item-id', {
+  size: '2x2',
+  content: 'Updated content'
+});</code></pre>
+                        </div>
+                        <div class="api-item">
+                            <h4>morphItem(itemId: string, newSize: string, duration?: number)</h4>
+                            <p>Morph an item to a new size with optional duration.</p>
+                            <pre><code class="language-javascript">masonry.morphItem('item-id', '2x2', 500);</code></pre>
+                        </div>
+                        <div class="api-item">
+                            <h4>resetItem(itemId: string)</h4>
+                            <p>Reset an item to its original size.</p>
+                            <pre><code class="language-javascript">masonry.resetItem('item-id');</code></pre>
+                        </div>
+                        <div class="api-item">
+                            <h4>updateConfig(newConfig: Partial&lt;MasonryConfig&gt;)</h4>
+                            <p>Update the masonry configuration.</p>
+                            <pre><code class="language-javascript">masonry.updateConfig({
+  columns: 6,
+  gap: 20
+});</code></pre>
+                        </div>
+                    </div>
+                    <div class="api-section">
+                        <h3>Events</h3>
+                        <div class="api-item">
+                            <h4>item:added</h4>
+                            <p>Fired when an item is added to the masonry.</p>
+                        </div>
+                        <div class="api-item">
+                            <h4>item:removed</h4>
+                            <p>Fired when an item is removed from the masonry.</p>
+                        </div>
+                        <div class="api-item">
+                            <h4>item:morphed</h4>
+                            <p>Fired when an item completes morphing.</p>
+                        </div>
+                        <div class="api-item">
+                            <h4>layout:updated</h4>
+                            <p>Fired when the layout is recalculated.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section id="download" class="download">
+            <div class="container">
+                <h2 class="section-title">Get Started</h2>
+                <div class="download-content">
+                    <div class="download-options">
+                        <div class="download-option">
+                            <h3>NPM</h3>
+                            <pre><code class="language-bash">npm install hy-masonry</code></pre>
+                        </div>
+                        <div class="download-option">
+                            <h3>CDN</h3>
+                            <pre><code class="language-html">&lt;script src="https://unpkg.com/hy-masonry@latest/dist/hy-masonry.js"&gt;&lt;/script&gt;</code></pre>
+                        </div>
+                        <div class="download-option">
+                            <h3>GitHub</h3>
+                            <a href="https://github.com/hy-masonry/hy-masonry" class="btn btn-secondary">View on GitHub</a>
+                        </div>
+                    </div>
+                    <div class="quick-start">
+                        <h3>Quick Start</h3>
+                        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;script src="https://unpkg.com/hy-masonry@latest/dist/hy-masonry.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;hy-masonry id="masonry"&gt;&lt;/hy-masonry&gt;
+    
+    &lt;script&gt;
+        const masonry = document.getElementById('masonry');
+        
+        // Add items
+        masonry.addItem({
+            id: 'item1',
+            size: '1x1',
+            content: 'Hello World!',
+            backgroundColor: '#f0f0f0'
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>HY Masonry</h3>
+                        <p>Advanced masonry layout web component with animations and interactions.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Links</h4>
+                        <ul>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#configuration">Configuration</a></li>
+                            <li><a href="#examples">Examples</a></li>
+                            <li><a href="#api">API</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="https://github.com/hy-masonry/hy-masonry">GitHub</a></li>
+                            <li><a href="https://npmjs.com/package/hy-masonry">NPM</a></li>
+                            <li><a href="#download">Download</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="footer-author">
+                        <span class="author-name">Yannick HUCHARD</span>
+                        <div class="author-links">
+                            <a href="https://yannickhuchard.com" class="author-link" title="Personal Website">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                                </svg>
+                            </a>
+                            <a href="https://www.linkedin.com/in/yhuchard" class="author-link" title="LinkedIn Profile">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                    <rect x="2" y="9" width="4" height="12"></rect>
+                                    <circle cx="4" cy="4" r="2"></circle>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <link rel="stylesheet" href="dist/dist/hy-masonry.css">
+    <script type="module" src="dist/dist/hy-masonry.esm.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/config-demo.js"></script>
+    <script src="scripts/examples.js"></script>
+</body>
+</html> 

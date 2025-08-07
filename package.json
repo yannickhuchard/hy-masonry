@@ -1,0 +1,76 @@
+{
+  "name": "hy-masonry",
+  "version": "1.0.0",
+  "description": "Animated Masonry Layout as Web Component - Living organisms that morph and breathe",
+  "main": "dist/hy-masonry.js",
+  "module": "dist/hy-masonry.esm.js",
+  "unpkg": "dist/hy-masonry.min.js",
+  "types": "dist/hy-masonry.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && npm run build:types",
+    "build:types": "tsc --emitDeclarationOnly",
+    "preview": "vite preview",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src --ext .ts,.js",
+    "lint:fix": "eslint src --ext .ts,.js --fix",
+    "format": "prettier --write src/**/*.{ts,js,css,md}",
+    "docs": "typedoc src/index.ts",
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "masonry",
+    "layout",
+    "animation",
+    "web-component",
+    "react",
+    "shadcn",
+    "responsive",
+    "morphing",
+    "living",
+    "organisms"
+  ],
+  "author": "HY Masonry Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hy-masonry/hy-masonry.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hy-masonry/hy-masonry/issues"
+  },
+  "homepage": "https://hy-masonry.com",
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "jest": "^29.5.0",
+    "prettier": "^3.0.0",
+    "rimraf": "^5.0.0",
+    "terser": "^5.43.1",
+    "ts-jest": "^29.1.0",
+    "typedoc": "^0.25.0",
+    "typescript": "^5.1.0",
+    "vite": "^4.4.0",
+    "vite-plugin-dts": "^3.5.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Border Width Test</title>
+    <link rel="stylesheet" href="dist/hy-masonry.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .controls {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+        .control-group {
+            margin-bottom: 10px;
+        }
+        label {
+            display: inline-block;
+            width: 120px;
+            font-weight: bold;
+        }
+        input[type="range"] {
+            width: 200px;
+        }
+        .value {
+            margin-left: 10px;
+            font-weight: bold;
+            color: #007bff;
+        }
+        
+        /* Ensure masonry fits in viewport */
+        hy-masonry {
+            max-height: 400px !important;
+            overflow-y: auto !important;
+        }
+        
+        hy-masonry .masonry-container {
+            max-height: 400px !important;
+            overflow-y: auto !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Border Width Test</h1>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="borderWidth">Border Width:</label>
+                <input type="range" id="borderWidth" min="0" max="10" value="1" step="1">
+                <span class="value">1px</span>
+            </div>
+        </div>
+        
+        <hy-masonry id="test-masonry" 
+                     columns="4" 
+                     gap="12" 
+                     padding="16"
+                     border-width="1"
+                     style="--border-color: #ff0000; max-height: 400px; overflow-y: auto;">
+        </hy-masonry>
+    </div>
+
+    <script type="module" src="dist/hy-masonry.esm.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, checking for hy-masonry component...');
+            console.log('Custom elements:', customElements.get('hy-masonry'));
+            
+            const masonry = document.getElementById('test-masonry');
+            console.log('Masonry element:', masonry);
+            console.log('Masonry methods:', Object.getOwnPropertyNames(Object.getPrototypeOf(masonry)));
+            
+            const borderWidthSlider = document.getElementById('borderWidth');
+            const valueDisplay = borderWidthSlider.nextElementSibling;
+            
+            // Add test items
+            const testItems = [
+                { id: 'item1', size: '1x1', content: '<div style="padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 8px; text-align: center;">Item 1</div>' },
+                { id: 'item2', size: '2x1', content: '<div style="padding: 20px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border-radius: 8px; text-align: center;">Item 2</div>' },
+                { id: 'item3', size: '1x1', content: '<div style="padding: 20px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; border-radius: 8px; text-align: center;">Item 3</div>' },
+                { id: 'item4', size: '1x1', content: '<div style="padding: 20px; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; border-radius: 8px; text-align: center;">Item 4</div>' }
+            ];
+            
+            // Wait for component to be ready
+            setTimeout(() => {
+                console.log('Adding test items...');
+                testItems.forEach(item => {
+                    try {
+                        masonry.addItem(item);
+                        console.log('Added item:', item.id);
+                    } catch (error) {
+                        console.error('Error adding item:', error);
+                    }
+                });
+            }, 500);
+            
+            // Handle border width slider
+            borderWidthSlider.addEventListener('input', function(e) {
+                const value = e.target.value;
+                valueDisplay.textContent = value + 'px';
+                try {
+                    masonry.updateConfig({ borderWidth: parseInt(value) });
+                    console.log('Border width updated to:', value + 'px');
+                } catch (error) {
+                    console.error('Error updating border width:', error);
+                }
+                
+                // Debug: Check if the CSS custom property is being set
+                setTimeout(() => {
+                    const computedStyle = getComputedStyle(masonry);
+                    const borderWidth = computedStyle.getPropertyValue('--border-width');
+                    console.log('Computed border width CSS property:', borderWidth);
+                    
+                    // Check a masonry item's border
+                    const firstItem = masonry.querySelector('.masonry-item');
+                    if (firstItem) {
+                        const itemBorder = getComputedStyle(firstItem).border;
+                        console.log('First item border:', itemBorder);
+                    }
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html> 

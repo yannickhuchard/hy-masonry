@@ -1,0 +1,350 @@
+/* HY Masonry Component Styles */
+
+/* Root component */
+hy-masonry {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Container */
+hy-masonry .masonry-container {
+  display: grid;
+  grid-template-columns: repeat(var(--columns, 4), 1fr);
+  gap: var(--gap, 16px);
+  padding: var(--padding, 20px);
+  position: relative;
+  min-height: 200px;
+}
+
+/* Individual items */
+hy-masonry .masonry-item {
+  position: relative;
+  border-radius: var(--border-radius, 8px);
+  background: var(--bg-color, #ffffff);
+  color: var(--text-color, #000000);
+  box-shadow: var(--shadow, 0 2px 8px rgba(0, 0, 0, 0.1));
+  transition: all var(--transition, 300ms ease);
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  will-change: transform, opacity;
+  transform-origin: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 16px;
+  min-height: 100px;
+  border: var(--border-width, 1px) solid var(--border-color, #333333);
+}
+
+/* Hover effects */
+hy-masonry .masonry-item:hover {
+  transform: scale(var(--hover-scale, 1.02));
+  box-shadow: var(--hover-shadow, 0 4px 16px rgba(0, 0, 0, 0.15));
+  z-index: 10;
+}
+
+/* Focus states for accessibility */
+hy-masonry .masonry-item:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Morphing state */
+hy-masonry .masonry-item.morphing {
+  transition: all var(--morph-duration, 500ms) cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 20;
+}
+
+/* Animation classes */
+hy-masonry .masonry-item.breathing {
+  animation: breathing var(--breathing-speed, 2000ms) ease-in-out infinite;
+}
+
+hy-masonry .masonry-item.pulse {
+  animation: pulse var(--pulse-speed, 1500ms) ease-in-out infinite;
+}
+
+hy-masonry .masonry-item.float {
+  animation: float var(--float-speed, 3000ms) ease-in-out infinite;
+}
+
+/* Visibility for performance */
+hy-masonry .masonry-item:not(.visible) {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+hy-masonry .masonry-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Animation keyframes */
+@keyframes breathing {
+  0%, 100% { 
+    transform: scale(1); 
+  }
+  50% { 
+    transform: scale(1.02); 
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    transform: scale(1); 
+    opacity: 1; 
+  }
+  50% { 
+    transform: scale(1.05); 
+    opacity: 0.8; 
+  }
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-10px); 
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  hy-masonry .masonry-container {
+    grid-template-columns: repeat(var(--columns-mobile, 2), 1fr);
+    gap: var(--gap-mobile, 12px);
+    padding: var(--padding-mobile, 16px);
+  }
+  
+  hy-masonry .masonry-item {
+    min-height: 80px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  hy-masonry .masonry-container {
+    grid-template-columns: repeat(var(--columns-mobile, 1), 1fr);
+    gap: var(--gap-mobile, 8px);
+    padding: var(--padding-mobile, 12px);
+  }
+}
+
+/* Theme variations */
+hy-masonry[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+  --border-color: #333333;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --hover-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+hy-masonry[data-theme="minimal"] {
+  --bg-color: #fafafa;
+  --text-color: #333333;
+  --border-color: #e5e5e5;
+  --shadow: none;
+  --hover-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --hover-scale: 1.01;
+}
+
+hy-masonry[data-theme="glass"] {
+  --bg-color: rgba(255, 255, 255, 0.1);
+  --text-color: #ffffff;
+  --border-color: rgba(255, 255, 255, 0.2);
+  --shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  --hover-shadow: 0 12px 40px rgba(31, 38, 135, 0.5);
+  --hover-scale: 1.05;
+}
+
+hy-masonry[data-theme="neon"] {
+  --bg-color: #000000;
+  --text-color: #00ff00;
+  --border-color: #00ff00;
+  --shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+  --hover-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+  --hover-scale: 1.1;
+}
+
+/* Loading states */
+hy-masonry .masonry-item.loading {
+  position: relative;
+  overflow: hidden;
+}
+
+hy-masonry .masonry-item.loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Error states */
+hy-masonry .masonry-item.error {
+  background: #fee;
+  border-color: #fcc;
+  color: #c33;
+}
+
+/* Success states */
+hy-masonry .masonry-item.success {
+  background: #efe;
+  border-color: #cfc;
+  color: #3c3;
+}
+
+/* Typography */
+hy-masonry .masonry-item h1,
+hy-masonry .masonry-item h2,
+hy-masonry .masonry-item h3,
+hy-masonry .masonry-item h4,
+hy-masonry .masonry-item h5,
+hy-masonry .masonry-item h6 {
+  margin: 0 0 8px 0;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+hy-masonry .masonry-item p {
+  margin: 0;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+hy-masonry .masonry-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Interactive elements */
+hy-masonry .masonry-item button {
+  background: var(--bg-color, #ffffff);
+  color: var(--text-color, #000000);
+  border: 1px solid var(--border-color, #333333);
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 16px;
+}
+
+hy-masonry .masonry-item button:hover {
+  background: var(--text-color, #000000);
+  color: var(--bg-color, #ffffff);
+  transform: scale(1.05);
+}
+
+/* Long press feedback */
+hy-masonry .masonry-item.long-press {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+
+/* Morphing animations */
+hy-masonry .masonry-item.morphing-in {
+  animation: morphIn var(--morph-duration, 500ms) ease-out;
+}
+
+hy-masonry .masonry-item.morphing-out {
+  animation: morphOut var(--morph-duration, 500ms) ease-in;
+}
+
+@keyframes morphIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes morphOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* Hardware acceleration */
+hy-masonry .masonry-item {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Print styles */
+@media print {
+  hy-masonry .masonry-item {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+  
+  hy-masonry .masonry-item:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  hy-masonry .masonry-item {
+    animation: none;
+    transition: none;
+  }
+  
+  hy-masonry .masonry-item:hover {
+    transform: none;
+  }
+  
+  hy-masonry .masonry-item.breathing,
+  hy-masonry .masonry-item.pulse,
+  hy-masonry .masonry-item.float {
+    animation: none;
+  }
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  hy-masonry .masonry-item {
+    border: 2px solid;
+  }
+  
+  hy-masonry .masonry-item:hover {
+    border-width: 3px;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  hy-masonry:not([data-theme]) {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --border-color: #333333;
+  }
+} 

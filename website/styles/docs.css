@@ -1,0 +1,847 @@
+/* Documentation Styles */
+/* Syntax Highlighting */
+.language-javascript,
+.language-html,
+.language-css,
+.language-bash {
+  color: #e6e6e6;
+}
+
+/* JavaScript Syntax */
+.language-javascript .keyword {
+  color: #ff79c6;
+}
+
+.language-javascript .function {
+  color: #50fa7b;
+}
+
+.language-javascript .string {
+  color: #f1fa8c;
+}
+
+.language-javascript .number {
+  color: #bd93f9;
+}
+
+.language-javascript .comment {
+  color: #6272a4;
+  font-style: italic;
+}
+
+.language-javascript .operator {
+  color: #ff79c6;
+}
+
+.language-javascript .punctuation {
+  color: #f8f8f2;
+}
+
+/* HTML Syntax */
+.language-html .tag {
+  color: #ff79c6;
+}
+
+.language-html .attr-name {
+  color: #50fa7b;
+}
+
+.language-html .attr-value {
+  color: #f1fa8c;
+}
+
+.language-html .string {
+  color: #f1fa8c;
+}
+
+.language-html .comment {
+  color: #6272a4;
+  font-style: italic;
+}
+
+/* CSS Syntax */
+.language-css .selector {
+  color: #ff79c6;
+}
+
+.language-css .property {
+  color: #50fa7b;
+}
+
+.language-css .value {
+  color: #f1fa8c;
+}
+
+.language-css .punctuation {
+  color: #f8f8f2;
+}
+
+.language-css .comment {
+  color: #6272a4;
+  font-style: italic;
+}
+
+/* Bash Syntax */
+.language-bash .command {
+  color: #50fa7b;
+}
+
+.language-bash .string {
+  color: #f1fa8c;
+}
+
+.language-bash .comment {
+  color: #6272a4;
+  font-style: italic;
+}
+
+/* Code Block Enhancements - Mobile Optimized */
+pre {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 0.85rem; /* Smaller for mobile */
+  line-height: 1.4; /* Tighter for mobile */
+  margin: 1rem 0; /* Reduced margin for mobile */
+}
+
+pre::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 24px; /* Smaller for mobile */
+  background: linear-gradient(90deg, #ff5555 0%, #ffb86c 25%, #f1fa8c 50%, #50fa7b 75%, #8be9fd 100%);
+  opacity: 0.1;
+}
+
+/* Copy Button - Mobile Optimized */
+.copy-button {
+  position: absolute;
+  top: 6px; /* Adjusted for mobile */
+  right: 6px; /* Adjusted for mobile */
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-secondary);
+  padding: 6px 10px; /* Larger for touch */
+  border-radius: 4px;
+  font-size: 0.7rem; /* Smaller for mobile */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  min-height: var(--mobile-touch-target, 32px); /* Touch target */
+  min-width: 60px; /* Minimum width for touch */
+}
+
+.copy-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+}
+
+.copy-button.copied {
+  background: var(--accent-primary);
+  color: white;
+}
+
+/* Documentation Navigation - Mobile Optimized */
+.doc-nav {
+  position: static; /* Static on mobile */
+  max-height: none; /* No max height on mobile */
+  overflow-y: visible; /* No scroll on mobile */
+  padding-right: 0; /* No right padding on mobile */
+  margin-bottom: 2rem; /* Add bottom margin on mobile */
+}
+
+.doc-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* Horizontal on mobile */
+  flex-wrap: wrap; /* Allow wrapping */
+  gap: 0.5rem; /* Smaller gap for mobile */
+}
+
+.doc-nav li {
+  margin-bottom: 0; /* No bottom margin on mobile */
+}
+
+.doc-nav a {
+  display: block;
+  padding: 8px 12px; /* Larger for touch */
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-size: 0.85rem; /* Smaller for mobile */
+  white-space: nowrap; /* Prevent text wrapping */
+  min-height: var(--mobile-touch-target, 36px); /* Touch target */
+  display: flex;
+  align-items: center;
+}
+
+.doc-nav a:hover,
+.doc-nav a.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+.doc-nav a.active {
+  background: var(--gradient-primary);
+  color: white;
+}
+
+/* Documentation Content - Mobile Optimized */
+.doc-content {
+  line-height: 1.6; /* Reduced for mobile */
+  font-size: 0.95rem; /* Smaller for mobile */
+}
+
+/* Remove purple colors and replace with dark/blue */
+.docs-content h1,
+.docs-content h2,
+.docs-content h3 {
+    color: #4a90e2;
+}
+
+.docs-content code {
+    color: #4a90e2;
+}
+
+.docs-content pre {
+    color: #4a90e2;
+}
+
+.docs-content blockquote {
+    color: #4a90e2;
+}
+
+.docs-content a {
+    color: #4a90e2;
+}
+
+.docs-content strong {
+    color: #4a90e2;
+}
+
+.docs-content em {
+    color: #4a90e2;
+}
+
+.docs-content .highlight {
+    color: #4a90e2;
+}
+
+.doc-content h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2rem; /* Smaller for mobile */
+  border-bottom: 2px solid var(--accent-primary);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem; /* Reduced for mobile */
+}
+
+.doc-content h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem; /* Smaller for mobile */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem; /* Reduced for mobile */
+}
+
+.doc-content h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.25rem; /* Smaller for mobile */
+  margin-bottom: 0.75rem; /* Reduced for mobile */
+}
+
+.doc-content h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem; /* Smaller for mobile */
+  margin-bottom: 0.5rem; /* Reduced for mobile */
+}
+
+.doc-content p {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin-bottom: 0.75rem; /* Reduced for mobile */
+  color: var(--text-secondary);
+  line-height: 1.5; /* Tighter for mobile */
+}
+
+.doc-content ul,
+.doc-content ol {
+  margin-bottom: 0.75rem; /* Reduced for mobile */
+  padding-left: 1.5rem; /* Reduced for mobile */
+}
+
+.doc-content li {
+  margin-bottom: 0.25rem; /* Reduced for mobile */
+  color: var(--text-secondary);
+  line-height: 1.4; /* Tighter for mobile */
+}
+
+.doc-content blockquote {
+  border-left: 3px solid var(--accent-primary); /* Thinner for mobile */
+  padding-left: 0.75rem; /* Reduced for mobile */
+  margin: 1rem 0; /* Reduced for mobile */
+  font-style: italic;
+  color: var(--text-secondary);
+  font-size: 0.9rem; /* Smaller for mobile */
+}
+
+.doc-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0; /* Reduced for mobile */
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  font-size: 0.85rem; /* Smaller for mobile */
+}
+
+.doc-content table::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  z-index: -1;
+}
+
+.doc-content th,
+.doc-content td {
+  padding: 0.5rem; /* Reduced for mobile */
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  word-wrap: break-word; /* Allow text wrapping */
+  max-width: 200px; /* Limit width on mobile */
+}
+
+.doc-content th {
+  background: rgba(255, 255, 255, 0.05);
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.8rem; /* Smaller for mobile */
+}
+
+.doc-content td {
+  color: var(--text-secondary);
+  font-size: 0.8rem; /* Smaller for mobile */
+}
+
+.doc-content tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Configuration Documentation - Mobile Optimized */
+.config-doc {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem; /* Reduced for mobile */
+  margin: 1.5rem 0; /* Reduced for mobile */
+  position: relative;
+  overflow: hidden;
+}
+
+.config-doc::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  z-index: -1;
+}
+
+.config-doc h3 {
+  color: var(--text-primary);
+  margin-bottom: 1rem; /* Reduced for mobile */
+  font-size: 1.25rem; /* Smaller for mobile */
+}
+
+.config-doc .config-property {
+  margin-bottom: 1rem; /* Reduced for mobile */
+  padding: 0.75rem; /* Reduced for mobile */
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.config-property h4 {
+  color: var(--accent-primary);
+  margin-bottom: 0.5rem;
+  font-size: 1rem; /* Smaller for mobile */
+}
+
+.config-property .type {
+  color: var(--text-muted);
+  font-size: 0.8rem; /* Smaller for mobile */
+  font-family: 'Fira Code', monospace;
+}
+
+.config-property .default {
+  color: var(--text-secondary);
+  font-size: 0.8rem; /* Smaller for mobile */
+  margin-top: 0.5rem;
+}
+
+.config-property .description {
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+  line-height: 1.4; /* Tighter for mobile */
+  font-size: 0.85rem; /* Smaller for mobile */
+}
+
+/* Method Documentation - Mobile Optimized */
+.method-doc {
+  margin-bottom: 1.5rem; /* Reduced for mobile */
+  padding: 1rem; /* Reduced for mobile */
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.method-doc::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  z-index: -1;
+}
+
+.method-doc h3 {
+  color: var(--text-primary);
+  margin-bottom: 0.75rem; /* Reduced for mobile */
+  font-size: 1.1rem; /* Smaller for mobile */
+  font-family: 'Fira Code', monospace;
+}
+
+.method-doc .signature {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.75rem; /* Reduced for mobile */
+  border-radius: 8px;
+  margin: 0.75rem 0; /* Reduced for mobile */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: 'Fira Code', monospace;
+  color: #e6e6e6;
+  font-size: 0.8rem; /* Smaller for mobile */
+  overflow-x: auto; /* Allow horizontal scroll */
+}
+
+.method-doc .parameters {
+  margin: 0.75rem 0; /* Reduced for mobile */
+}
+
+.method-doc .parameter {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem; /* Reduced for mobile */
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.method-doc .parameter-name {
+  color: var(--accent-primary);
+  font-weight: 600;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.85rem; /* Smaller for mobile */
+}
+
+.method-doc .parameter-type {
+  color: var(--text-muted);
+  font-size: 0.75rem; /* Smaller for mobile */
+  font-family: 'Fira Code', monospace;
+}
+
+.method-doc .parameter-description {
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+  font-size: 0.8rem; /* Smaller for mobile */
+  line-height: 1.3; /* Tighter for mobile */
+}
+
+/* Event Documentation - Mobile Optimized */
+.event-doc {
+  margin-bottom: 1rem; /* Reduced for mobile */
+  padding: 0.75rem; /* Reduced for mobile */
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.event-doc h4 {
+  color: var(--accent-primary);
+  margin-bottom: 0.5rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem; /* Smaller for mobile */
+}
+
+.event-doc .event-description {
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem; /* Smaller for mobile */
+  line-height: 1.4; /* Tighter for mobile */
+}
+
+.event-doc .event-data {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.5rem; /* Reduced for mobile */
+  border-radius: 6px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem; /* Smaller for mobile */
+  color: #e6e6e6;
+  overflow-x: auto; /* Allow horizontal scroll */
+}
+
+/* Responsive Documentation - Mobile First */
+@media (min-width: 768px) {
+  .doc-nav {
+    position: sticky;
+    max-height: calc(100vh - 120px);
+    margin-bottom: 0;
+  }
+  
+  .doc-nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .doc-nav li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .doc-nav a {
+    white-space: normal;
+    padding: 0.5rem 1rem;
+    min-height: auto;
+    display: block;
+  }
+  
+  .doc-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .doc-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .doc-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .doc-content h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .doc-content p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+  
+  .doc-content ul,
+  .doc-content ol {
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+  }
+  
+  .doc-content li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+  
+  .doc-content blockquote {
+    border-left-width: 4px;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-size: 1rem;
+  }
+  
+  .doc-content table {
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+  }
+  
+  .doc-content th,
+  .doc-content td {
+    padding: 1rem;
+    max-width: none;
+  }
+  
+  .doc-content th {
+    font-size: 0.9rem;
+  }
+  
+  .doc-content td {
+    font-size: 0.9rem;
+  }
+  
+  .config-doc,
+  .method-doc {
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+  
+  .config-doc h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .config-doc .config-property {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+  }
+  
+  .config-property h4 {
+    font-size: 1.1rem;
+  }
+  
+  .config-property .type {
+    font-size: 0.9rem;
+  }
+  
+  .config-property .default {
+    font-size: 0.9rem;
+  }
+  
+  .config-property .description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  
+  .method-doc {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+  }
+  
+  .method-doc h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .method-doc .signature {
+    padding: 1rem;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+  }
+  
+  .method-doc .parameters {
+    margin: 1rem 0;
+  }
+  
+  .method-doc .parameter {
+    padding: 0.75rem;
+  }
+  
+  .method-doc .parameter-name {
+    font-size: 0.95rem;
+  }
+  
+  .method-doc .parameter-type {
+    font-size: 0.85rem;
+  }
+  
+  .method-doc .parameter-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .event-doc {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+  }
+  
+  .event-doc h4 {
+    font-size: 1rem;
+  }
+  
+  .event-doc .event-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
+  .event-doc .event-data {
+    padding: 0.75rem;
+    font-size: 0.85rem;
+  }
+  
+  pre {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 1.5rem 0;
+  }
+  
+  pre::before {
+    height: 30px;
+  }
+  
+  .copy-button {
+    top: 8px;
+    right: 8px;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    min-height: auto;
+    min-width: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .doc-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .doc-content h2 {
+    font-size: 2rem;
+  }
+  
+  .doc-content h3 {
+    font-size: 1.5rem;
+  }
+  
+  .doc-content h4 {
+    font-size: 1.25rem;
+  }
+  
+  .doc-content p {
+    font-size: 1rem;
+  }
+  
+  .doc-content table {
+    font-size: 0.9rem;
+  }
+  
+  .doc-content th,
+  .doc-content td {
+    padding: 1rem;
+  }
+  
+  .config-doc,
+  .method-doc {
+    padding: 2rem;
+  }
+  
+  .config-doc h3 {
+    font-size: 1.5rem;
+  }
+  
+  .method-doc h3 {
+    font-size: 1.3rem;
+  }
+  
+  pre {
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile-specific touch optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Increase touch targets for interactive elements */
+  .doc-nav a,
+  .copy-button {
+    min-height: 44px;
+  }
+  
+  /* Reduce animations on mobile for better performance */
+  .doc-nav a,
+  .copy-button {
+    transition: all 0.2s ease;
+  }
+  
+  /* Optimize scrolling for touch devices */
+  .doc-nav {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+  
+  /* Improve table scrolling on mobile */
+  .doc-content table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .doc-content table {
+    border-width: 2px;
+  }
+  
+  .config-doc,
+  .method-doc,
+  .event-doc {
+    border-width: 2px;
+  }
+  
+  .doc-content blockquote {
+    border-left-width: 4px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .doc-nav a,
+  .copy-button {
+    transition: none;
+  }
+}
+
+/* Dark mode optimizations for mobile */
+@media (prefers-color-scheme: dark) {
+  .doc-content {
+    color: #e0e0e0;
+  }
+  
+  .doc-content code {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 4px;
+    border-radius: 3px;
+  }
+}
+
+/* Print styles for mobile */
+@media print {
+  .doc-nav {
+    display: none;
+  }
+  
+  .copy-button {
+    display: none;
+  }
+  
+  .doc-content {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+  
+  .doc-content h1,
+  .doc-content h2,
+  .doc-content h3,
+  .doc-content h4 {
+    page-break-after: avoid;
+  }
+  
+  .doc-content table {
+    page-break-inside: avoid;
+  }
+} 

@@ -1,0 +1,46 @@
+{
+  "name": "hy-masonry-website",
+  "version": "1.0.0",
+  "description": "Official website for HY Live Masonry - Advanced Web Component",
+  "main": "index.html",
+  "scripts": {
+    "build": "node build.js build",
+    "serve": "node build.js serve",
+    "clean": "node build.js clean",
+    "watch": "node build.js watch",
+    "dev": "node build.js dev",
+    "start": "npm run dev"
+  },
+  "keywords": [
+    "masonry",
+    "web-component",
+    "layout",
+    "responsive",
+    "animation",
+    "documentation",
+    "website"
+  ],
+  "author": "HY Live Masonry Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hy-masonry/hy-masonry.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hy-masonry/hy-masonry/issues"
+  },
+  "homepage": "https://hy-masonry.github.io",
+  "devDependencies": {
+    "chokidar": "^3.5.3",
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+} 

@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://hy-masonry.com/sitemap.xml
+
+# Disallow admin or private areas (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow all other content
+Allow: /images/
+Allow: /styles/
+Allow: /scripts/
+Allow: /docs/ 
